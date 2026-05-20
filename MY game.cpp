@@ -1,5 +1,6 @@
 ﻿#include <iostream>
 #include <algorithm>
+#include <string>
 
 class Character;//Characterクラスの前方宣言
 class Enemy;//Enemyクラスの前方宣言	
@@ -23,7 +24,7 @@ public:
 	}
 };//すべてのキャラの基底クラス
 
-class Player : public Character {
+class Player : public Character {//Playerクラスは子、Characterクラスは親
 public:
 	int Enargy;
 	Player() : Character(80), Enargy(3) {}//PlayerのコンストラクタでHPを80、エナジーを3に初期
@@ -38,7 +39,7 @@ public:
 	void Attack(class Player& player);
 };
 
-void Player::Attack(Enemy& enemy) {//Playerの攻撃関数
+void Player::Attack(Enemy& enemy) {//Playerクラスの攻撃関数
 	int damage = 10;
 	enemy.TakeDamage(damage);//EnemyのTakeDamage関数を呼び出してダメージを与える
 }
@@ -47,6 +48,46 @@ void Enemy::Attack(Player& player) {//Enemyの攻撃関数
 	int damage = 10;
 	player.TakeDamage(damage);//PlayerのTakeDamage関数を呼び出してダメージを与える
 }
+
+class Card {//カードの基底クラス
+public:
+	int cost;
+	std::string name;
+	int cost;
+
+	Card(std::string n, int c)
+		: name(n), cost(c) {//ここで他のクラスからのデータを受け取み、詰め込む
+	}
+	virtual void Use(Player& player, Enemy& enemy) = 0;//Use関数を他のクラスで必ず作るようにする
+	                                                   //Use関数の中で動きをつけるようにする
+};
+
+class strike : public Card {
+public:
+	strike() : Card("Strike", 1) {}//strikeクラスのコンストラクタでカード名を"Strike"、コストを1に決定
+	void Use(Player& player, Enemy& enemy) override {//strikeクラスのUse関数
+		if (player.Enargy < cost) {
+			std::cout << "エナジーが足りません\n";
+			return;
+		}
+		player.Enargy -= cost;//プレイヤーのエナジーからコストを引く
+		int damage = 6;
+		enemy.TakeDamage(damage);//EnemyのTakeDamage関数を呼び出してダメージを与える
+	}
+};
+
+class defend : public Card {
+public:
+	defend() : Card("Defend", 1) {}//defendクラスのコンストラクタでカード名を"Defend"、コストを1に決定
+	void Use(Player& player, Enemy& enemy) override {//defendクラスのUse関数
+		if (player.Enargy < cost) {
+			std::cout << "エナジーが足りません\n";
+			return;
+		}
+		player.Enargy -= cost;//プレイヤーのエナジーからコストを引く
+		player.Block += 5;//プレイヤーのBlockに5加算
+	}
+};
 
 void BattleLoop()
 {
