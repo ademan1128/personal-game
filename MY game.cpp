@@ -1,6 +1,10 @@
 ﻿#include <iostream>
 #include <algorithm>
 #include <string>
+#include <vector>
+#include <random>
+
+using namespace std;
 
 class Character;//Characterクラスの前方宣言
 class Enemy;//Enemyクラスの前方宣言	
@@ -52,10 +56,9 @@ void Enemy::Attack(Player& player) {//Enemyの攻撃関数
 class Card {//カードの基底クラス
 public:
 	int cost;
-	std::string name;
-	int cost;
+	string name;
 
-	Card(std::string n, int c)
+	Card(string n, int c)
 		: name(n), cost(c) {//ここで他のクラスからのデータを受け取み、詰め込む
 	}
 	virtual void Use(Player& player, Enemy& enemy) = 0;//Use関数を他のクラスで必ず作るようにする
@@ -67,7 +70,7 @@ public:
 	strike() : Card("Strike", 1) {}//strikeクラスのコンストラクタでカード名を"Strike"、コストを1に決定
 	void Use(Player& player, Enemy& enemy) override {//strikeクラスのUse関数
 		if (player.Enargy < cost) {
-			std::cout << "エナジーが足りません\n";
+			cout << "エナジーが足りません\n";
 			return;
 		}
 		player.Enargy -= cost;//プレイヤーのエナジーからコストを引く
@@ -81,13 +84,25 @@ public:
 	defend() : Card("Defend", 1) {}//defendクラスのコンストラクタでカード名を"Defend"、コストを1に決定
 	void Use(Player& player, Enemy& enemy) override {//defendクラスのUse関数
 		if (player.Enargy < cost) {
-			std::cout << "エナジーが足りません\n";
+			cout << "エナジーが足りません\n";
 			return;
 		}
 		player.Enargy -= cost;//プレイヤーのエナジーからコストを引く
 		player.Block += 5;//プレイヤーのBlockに5加算
 	}
 };
+
+void CardShuffle() {
+	vector<Card*> deck;
+	deck.push_back(new strike());
+	deck.push_back(new defend());
+	int Getcard = 3;
+
+
+	random_device rnd;
+	mt19937 mt(rnd());
+	uniform_int_distribution<>rand100(1,100);
+}
 
 void BattleLoop()
 {
@@ -102,36 +117,36 @@ void BattleLoop()
 	while (playerTurn == true)
 	{
 		if (enemy.HP <= 0) {
-			std::cout << "You Win!\n";
+			cout << "You Win!\n";
 			break;
 		}
 		choice = 0;
-		std::cout << "1:攻撃 2:防御 3:ターン終了\n";
-		std::cin >> choice;
+		::cout << "1:攻撃 2:防御 3:ターン終了\n";
+		::cin >> choice;
 
 		if (choice == 1) {
 			if (player.Enargy <= 0) {
-				std::cout << "エナジーが足りません\n";
+				::cout << "エナジーが足りません\n";
 				continue;
 			}
 			player.Attack(enemy);
 			player.Enargy -= 1;
-			std::cout << "Player HP: " << player.HP << " Enemy HP: " << enemy.HP << "\n";
+			cout << "Player HP: " << player.HP << " Enemy HP: " << enemy.HP << "\n";
 			if (enemy.HP <= 0) {
-				std::cout << "You Win!\n";
+				cout << "You Win!\n";
 				break;
 			}
 		}
 		else if (choice == 2) {
 			if (player.Enargy <= 0) {
-				std::cout << "エナジーが足りません\n";
+				cout << "エナジーが足りません\n";
 				continue;
 			}
 			player.Block += 5;
 			player.Enargy -= 1;
 		}
 		else if (choice == 3) {
-			std::cout << "ターン終了\n";
+			cout << "ターン終了\n";
 			playerTurn = false;
 		}
 	}
@@ -141,9 +156,9 @@ void BattleLoop()
 		playerTurn = true;
 	}
 
-		std::cout << "Player HP: " << player.HP << " Enemy HP: " << enemy.HP << "\n";
+		cout << "Player HP: " << player.HP << " Enemy HP: " << enemy.HP << "\n";
 		if (player.HP <= 0) {
-			std::cout << "Game Over\n";
+			cout << "Game Over\n";
 			break;
 		}
 	}
