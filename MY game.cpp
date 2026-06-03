@@ -92,16 +92,27 @@ public:
 	}
 };
 
-void CardShuffle() {
+vector<Card*> CardShuffle() {
 	vector<Card*> deck;
-	deck.push_back(new strike());
-	deck.push_back(new defend());
-	int Getcard = 3;
+	vector<Card*> hand;
+	//デッキに追加
+	for (int i = 0; i < 5; i++)
+	{
+		deck.push_back(new strike());
+	}
 
+	for (int i = 0; i < 5; i++)
+	{
+		deck.push_back(new defend());
+	}
 
-	random_device rnd;
+	random_device rnd;//ランダムに数値を生成するためのオブジェクト
 	mt19937 mt(rnd());
-	uniform_int_distribution<>rand100(1,100);
+
+	shuffle(deck.begin(), deck.end(), mt);//deckのカードをランダムにシャッフルする。shuffle(開始位置, 終了位置, 乱数生成器)
+
+	return deck;
+
 }
 
 void BattleLoop()
@@ -110,12 +121,21 @@ void BattleLoop()
 	Player player;
 	Enemy enemy;
 	bool playerTurn = true;
+	vector<Card*> deck = CardShuffle();
+	vector<Card*> hand;
 
 	while (player.HP > 0 && enemy.HP > 0) {	int choice;
 	player.Enargy = 3;
 	player.Block = 0;
+	for (int i = 0; i < 5; i++)
+	{
+		hand.push_back(deck.back());
+		deck.pop_back();
+	}
+
 	while (playerTurn == true)
 	{
+
 		if (enemy.HP <= 0) {
 			cout << "You Win!\n";
 			break;
@@ -123,7 +143,13 @@ void BattleLoop()
 		choice = 0;
 		::cout << "1:攻撃 2:防御 3:ターン終了\n";
 		::cin >> choice;
-
+		for (int i = 0; i < hand.size(); i++)
+		{
+			cout << i + 1
+				<< ": "
+				<< hand[i]->name
+				<< endl;
+		}
 		if (choice == 1) {
 			if (player.Enargy <= 0) {
 				::cout << "エナジーが足りません\n";
