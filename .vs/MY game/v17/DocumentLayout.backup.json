@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\student\\Desktop\\\u65B0\u3057\u3044\u30D5\u30A9\u30EB\u30C0\u30FC (3)\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{3332B80C-F00F-4BC1-9C2C-59C6D935FBAC}|MY game.vcxproj|C:\\Users\\student\\Desktop\\\u65B0\u3057\u3044\u30D5\u30A9\u30EB\u30C0\u30FC (3)\\MY game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{3332B80C-F00F-4BC1-9C2C-59C6D935FBAC}|MY game.vcxproj|solutionrelative:MY game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MY game.cpp",
+              "DocumentMoniker": "C:\\Users\\student\\Desktop\\\u65B0\u3057\u3044\u30D5\u30A9\u30EB\u30C0\u30FC (3)\\MY game.cpp",
+              "RelativeDocumentMoniker": "MY game.cpp",
+              "ToolTip": "C:\\Users\\student\\Desktop\\\u65B0\u3057\u3044\u30D5\u30A9\u30EB\u30C0\u30FC (3)\\MY game.cpp",
+              "RelativeToolTip": "MY game.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-06-05T05:11:41.449Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
