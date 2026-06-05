@@ -1,12 +1,71 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\student\\Downloads\\\u3072\u306A\u5F62\\\u3072\u306A\u5F62\\project\\",
-  "Documents": [],
+  "WorkspaceRootPath": "C:\\Users\\student\\Desktop\\\u65B0\u3057\u3044\u30D5\u30A9\u30EB\u30C0\u30FC (4)\\\u3072\u306A\u5F62\\project\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{EFAFCEE4-F6EA-4651-BA3F-DC3176CDD3A8}|project.vcxproj|C:\\Users\\student\\Desktop\\\u65B0\u3057\u3044\u30D5\u30A9\u30EB\u30C0\u30FC (4)\\\u3072\u306A\u5F62\\project\\Source\\SettingGame.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{EFAFCEE4-F6EA-4651-BA3F-DC3176CDD3A8}|project.vcxproj|solutionrelative:Source\\SettingGame.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EFAFCEE4-F6EA-4651-BA3F-DC3176CDD3A8}|project.vcxproj|C:\\Users\\student\\Desktop\\\u65B0\u3057\u3044\u30D5\u30A9\u30EB\u30C0\u30FC (4)\\\u3072\u306A\u5F62\\project\\Source\\TitleScene.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{EFAFCEE4-F6EA-4651-BA3F-DC3176CDD3A8}|project.vcxproj|solutionrelative:Source\\TitleScene.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EFAFCEE4-F6EA-4651-BA3F-DC3176CDD3A8}|project.vcxproj|C:\\Users\\student\\Desktop\\\u65B0\u3057\u3044\u30D5\u30A9\u30EB\u30C0\u30FC (4)\\\u3072\u306A\u5F62\\project\\Source\\PlayScene.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{EFAFCEE4-F6EA-4651-BA3F-DC3176CDD3A8}|project.vcxproj|solutionrelative:Source\\PlayScene.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TitleScene.cpp",
+              "DocumentMoniker": "C:\\Users\\student\\Desktop\\\u65B0\u3057\u3044\u30D5\u30A9\u30EB\u30C0\u30FC (4)\\\u3072\u306A\u5F62\\project\\Source\\TitleScene.cpp",
+              "RelativeDocumentMoniker": "Source\\TitleScene.cpp",
+              "ToolTip": "C:\\Users\\student\\Desktop\\\u65B0\u3057\u3044\u30D5\u30A9\u30EB\u30C0\u30FC (4)\\\u3072\u306A\u5F62\\project\\Source\\TitleScene.cpp",
+              "RelativeToolTip": "Source\\TitleScene.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-06-05T05:24:11.207Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SettingGame.cpp",
+              "DocumentMoniker": "C:\\Users\\student\\Desktop\\\u65B0\u3057\u3044\u30D5\u30A9\u30EB\u30C0\u30FC (4)\\\u3072\u306A\u5F62\\project\\Source\\SettingGame.cpp",
+              "RelativeDocumentMoniker": "Source\\SettingGame.cpp",
+              "ToolTip": "C:\\Users\\student\\Desktop\\\u65B0\u3057\u3044\u30D5\u30A9\u30EB\u30C0\u30FC (4)\\\u3072\u306A\u5F62\\project\\Source\\SettingGame.cpp*",
+              "RelativeToolTip": "Source\\SettingGame.cpp*",
+              "ViewState": "AgIAACQAAAAAAAAAAAAAADoAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-06-05T05:19:00.239Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PlayScene.cpp",
+              "DocumentMoniker": "C:\\Users\\student\\Desktop\\\u65B0\u3057\u3044\u30D5\u30A9\u30EB\u30C0\u30FC (4)\\\u3072\u306A\u5F62\\project\\Source\\PlayScene.cpp",
+              "RelativeDocumentMoniker": "Source\\PlayScene.cpp",
+              "ToolTip": "C:\\Users\\student\\Desktop\\\u65B0\u3057\u3044\u30D5\u30A9\u30EB\u30C0\u30FC (4)\\\u3072\u306A\u5F62\\project\\Source\\PlayScene.cpp",
+              "RelativeToolTip": "Source\\PlayScene.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-06-05T05:15:41.935Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }
