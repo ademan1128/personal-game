@@ -13,10 +13,21 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="GameScene">
+      <UniqueIdentifier>{a6672bec-a617-498f-b46f-1bc983b13a53}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MY game.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="D:\newsui\最初のプログラム\project\Library\SceneManager.cpp">
+      <Filter>GameScene</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="D:\newsui\最初のプログラム\project\Library\SceneManager.h">
+      <Filter>GameScene</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
