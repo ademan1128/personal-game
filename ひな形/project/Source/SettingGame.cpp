@@ -68,9 +68,11 @@ public:
 class strike : public Card {
 public:
 	strike() : Card("Strike", 1) {}//strikeクラスのコンストラクタでカード名を"Strike"、コストを1に決定
-	void Use(Player& player, Enemy& enemy) override {//strikeクラスのUse関数
-		if (player.Enargy < cost) {
-			//cout << "エナジーが足りません\n";
+	void Use(Player& player, Enemy& enemy) override
+	{   //strikeクラスのUse関数
+		if (player.Enargy < cost) 
+		{
+			cout << "エナジーが足りません\n";
 			return;
 		}
 		player.Enargy -= cost;//プレイヤーのエナジーからコストを引く
@@ -82,9 +84,11 @@ public:
 class defend : public Card {
 public:
 	defend() : Card("Defend", 1) {}//defendクラスのコンストラクタでカード名を"Defend"、コストを1に決定
-	void Use(Player& player, Enemy& enemy) override {//defendクラスのUse関数
-		if (player.Enargy < cost) {
-			//cout << "エナジーが足りません\n";
+	void Use(Player& player, Enemy& enemy) override
+	{   //defendクラスのUse関数
+		if (player.Enargy < cost) 
+		{
+			cout << "エナジーが足りません\n";
 			return;
 		}
 		player.Enargy -= cost;//プレイヤーのエナジーからコストを引く
@@ -92,18 +96,18 @@ public:
 	}
 };
 
-vector<Card*> CardShuffle() {
-	vector<Card*> deck;
-	vector<Card*> hand;
+vector<Card*> CardShuffle() 
+{
+	vector<Card*> deck;//山札のプールを作成している
 	//デッキに追加
 	for (int i = 0; i < 5; i++)
 	{
-		deck.push_back(new strike());
+		deck.push_back(new strike());//strikeをdackの後ろに追加
 	}
 
 	for (int i = 0; i < 5; i++)
 	{
-		deck.push_back(new defend());
+		deck.push_back(new defend());//defendをdackの後ろに追加
 	}
 
 	random_device rnd;//ランダムに数値を生成するためのオブジェクト
@@ -115,6 +119,28 @@ vector<Card*> CardShuffle() {
 
 }
 
+
+void DrawCardWithShuffle(vector<Card*>& deck, vector<Card*>& discardPile, vector<Card*>& hand, int drawCount) 
+{
+	for (int i = 0; i < drawCount; i++) 
+	{
+		if (deck.empty()) //デッキが空の場合
+		{
+			if (discardPile.empty()) //捨て札も空の場合はドローできないのでループを抜ける
+			{
+				break;
+			}
+			deck = discardPile;//捨て札をデッキに移す
+			discardPile.clear();//捨て札を空にする
+			random_device rnd;
+			mt19937 mt(rnd());
+			shuffle(deck.begin(), deck.end(), mt);//デッキをシャッフルする
+			cout << "デッキがシャッフルされました\n";
+		}
+		hand.push_back(deck.back());
+		deck.pop_back();
+	}
+}
 void BattleLoop()
 {
 
@@ -123,69 +149,78 @@ void BattleLoop()
 	bool playerTurn = true;
 	vector<Card*> deck = CardShuffle();
 	vector<Card*> hand;
+	vector<Card*> discardPile;
 
-	while (player.HP > 0 && enemy.HP > 0) {
+	while (player.HP > 0 && enemy.HP > 0) 
+	{
 		int choice;
 		player.Enargy = 3;
 		player.Block = 0;
-		for (int i = 0; i < 5; i++)
-		{
-			hand.push_back(deck.back());
-			deck.pop_back();
-		}
+
+		DrawCardWithShuffle(deck, discardPile, hand, 5);
 
 		while (playerTurn == true)
 		{
 
-			if (enemy.HP <= 0) {
-				cout << "You Win!\n";
-				break;
-			}
-			choice = 0;
-			//::cout << "1:攻撃 2:防御 3:ターン終了\n";
-			//::cin >> choice;
 			for (int i = 0; i < hand.size(); i++)
 			{
-				cout << i + 1
-					<< ": "
-					<< hand[i]->name
-					<< endl;
+				cout << i + 1 << " : " << hand[i]->name << " Cost:" << hand[i]->cost << endl;//手札表示
 			}
-			if (choice == 1) {
-				if (player.Enargy <= 0) {
-					//::cout << "エナジーが足りません\n";
-					continue;
-				}
-				player.Attack(enemy);
-				player.Enargy -= 1;
-			//	cout << "Player HP: " << player.HP << " Enemy HP: " << enemy.HP << "\n";
-				if (enemy.HP <= 0) {
-				//	cout << "You Win!\n";
-					break;
-				}
-			}
-			else if (choice == 2) {
-				if (player.Enargy <= 0) {
-					//cout << "エナジーが足りません\n";
-					continue;
-				}
-				player.Block += 5;
-				player.Enargy -= 1;
-			}
-			else if (choice == 3) {
-			//	cout << "ターン終了\n";
+
+			cout << "0 : ターン終了" << endl;
+
+			cin >> choice;
+
+			if (choice == 0)
+			{
 				playerTurn = false;
+				break;
+			}
+
+			if (choice >= 1 && choice <= hand.size())
+			{
+				int index = choice - 1;
+
+				if (player.Enargy >= hand[index]->cost)//持っているエナジーがカードのコスト以上であればを判定する
+				{
+					hand[index]->Use(player, enemy);//handのindex番目のカードのUse関数を呼び出す
+
+					discardPile.push_back(hand[index]);//使用したカードを捨て札に移す
+					hand.erase(hand.begin() + index);//使用したカードを手札から削除する
+					if (enemy.HP <= 0)
+					{
+						cout << "You Win!\n";
+						return;
+					}
+				}
+				else
+				{
+					cout << "エナジーが足りません\n";
+				}
 			}
 		}
+		if (enemy.HP <= 0) {
+			cout << "You Win!\n";
+			break;
+		}
+
+
+		for (Card* card : hand) {
+			discardPile.push_back(card);
+		}
+		hand.clear(); // 手札を空にする
+
 		if (enemy.HP > 0)
 		{
 			enemy.Attack(player);
 			playerTurn = true;
 		}
 
-		//cout << "Player HP: " << player.HP << " Enemy HP: " << enemy.HP << "\n";
-		if (player.HP <= 0) {
-		//	cout << "Game Over\n";
+		cout << "Player HP: " << player.HP << " Enemy HP: " << enemy.HP << "\n";
+
+		if (player.HP <= 0)
+		{
+			cout << "Game Over\n";
 			break;
 		}
 	}
