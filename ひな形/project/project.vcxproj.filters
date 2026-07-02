@@ -53,6 +53,30 @@
     <ClCompile Include="Source\SettingGame.cpp">
       <Filter>PlayScene</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Character.cpp">
+      <Filter>PlayScene\.cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Player.cpp">
+      <Filter>PlayScene\.cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Enemy.cpp">
+      <Filter>PlayScene\.cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Card.cpp">
+      <Filter>PlayScene\.cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Strike.cpp">
+      <Filter>PlayScene\.cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Defend.cpp">
+      <Filter>PlayScene\.cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Battle.cpp">
+      <Filter>PlayScene\.cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ImageManager.cpp">
+      <Filter>PlayScene\.cpp</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Screen.h" />
@@ -117,6 +141,30 @@
     <ClInclude Include="Library\myDxLib.h">
       <Filter>Library</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Character.h">
+      <Filter>PlayScene\.h</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Player.h">
+      <Filter>PlayScene\.h</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Enemy.h">
+      <Filter>PlayScene\.h</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Card.h">
+      <Filter>PlayScene\.h</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Strike.h">
+      <Filter>PlayScene\.h</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Defend.h">
+      <Filter>PlayScene\.h</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Battle.h">
+      <Filter>PlayScene\.h</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ImageManager.h">
+      <Filter>PlayScene\.h</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Library">
@@ -133,6 +181,12 @@
     </Filter>
     <Filter Include="ImGui">
       <UniqueIdentifier>{a717257b-67b3-4bfa-834c-1e34032b33b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PlayScene\.cpp">
+      <UniqueIdentifier>{3066ad64-b68d-4776-84e8-a565d166b98d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PlayScene\.h">
+      <UniqueIdentifier>{a713fb6a-668b-406e-917f-c662a3b1e174}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

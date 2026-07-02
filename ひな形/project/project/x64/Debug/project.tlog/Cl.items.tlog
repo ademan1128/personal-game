@@ -1,17 +1,26 @@
-C:\Users\student\Downloads\ひな形\ひな形\project\ImGui\imgui.cpp;C:\Users\student\Downloads\ひな形\ひな形\project\project\x64\Debug\imgui.obj
-C:\Users\student\Downloads\ひな形\ひな形\project\ImGui\imgui_draw.cpp;C:\Users\student\Downloads\ひな形\ひな形\project\project\x64\Debug\imgui_draw.obj
-C:\Users\student\Downloads\ひな形\ひな形\project\ImGui\imgui_impl_dx11.cpp;C:\Users\student\Downloads\ひな形\ひな形\project\project\x64\Debug\imgui_impl_dx11.obj
-C:\Users\student\Downloads\ひな形\ひな形\project\ImGui\imgui_impl_dx9.cpp;C:\Users\student\Downloads\ひな形\ひな形\project\project\x64\Debug\imgui_impl_dx9.obj
-C:\Users\student\Downloads\ひな形\ひな形\project\ImGui\imgui_impl_win32.cpp;C:\Users\student\Downloads\ひな形\ひな形\project\project\x64\Debug\imgui_impl_win32.obj
-C:\Users\student\Downloads\ひな形\ひな形\project\ImGui\imgui_ja_gryph_ranges.cpp;C:\Users\student\Downloads\ひな形\ひな形\project\project\x64\Debug\imgui_ja_gryph_ranges.obj
-C:\Users\student\Downloads\ひな形\ひな形\project\ImGui\imgui_tables.cpp;C:\Users\student\Downloads\ひな形\ひな形\project\project\x64\Debug\imgui_tables.obj
-C:\Users\student\Downloads\ひな形\ひな形\project\ImGui\imgui_widgets.cpp;C:\Users\student\Downloads\ひな形\ひな形\project\project\x64\Debug\imgui_widgets.obj
-C:\Users\student\Downloads\ひな形\ひな形\project\Library\App.cpp;C:\Users\student\Downloads\ひな形\ひな形\project\project\x64\Debug\App.obj
-C:\Users\student\Downloads\ひな形\ひな形\project\Library\main.cpp;C:\Users\student\Downloads\ひな形\ひな形\project\project\x64\Debug\main.obj
-C:\Users\student\Downloads\ひな形\ひな形\project\Library\ObjectManager.cpp;C:\Users\student\Downloads\ひな形\ひな形\project\project\x64\Debug\ObjectManager.obj
-C:\Users\student\Downloads\ひな形\ひな形\project\Library\SceneManager.cpp;C:\Users\student\Downloads\ひな形\ひな形\project\project\x64\Debug\SceneManager.obj
-C:\Users\student\Downloads\ひな形\ひな形\project\Library\Time.cpp;C:\Users\student\Downloads\ひな形\ひな形\project\project\x64\Debug\Time.obj
-C:\Users\student\Downloads\ひな形\ひな形\project\Source\BootScene.cpp;C:\Users\student\Downloads\ひな形\ひな形\project\project\x64\Debug\BootScene.obj
-C:\Users\student\Downloads\ひな形\ひな形\project\Source\PlayScene.cpp;C:\Users\student\Downloads\ひな形\ひな形\project\project\x64\Debug\PlayScene.obj
-C:\Users\student\Downloads\ひな形\ひな形\project\Source\SceneFactory.cpp;C:\Users\student\Downloads\ひな形\ひな形\project\project\x64\Debug\SceneFactory.obj
-C:\Users\student\Downloads\ひな形\ひな形\project\Source\TitleScene.cpp;C:\Users\student\Downloads\ひな形\ひな形\project\project\x64\Debug\TitleScene.obj
+C:\Users\adema\Desktop\新しいフォルダー (5)\ひな形\project\ImGui\imgui.cpp;C:\Users\adema\Desktop\新しいフォルダー (5)\ひな形\project\project\x64\Debug\imgui.obj
+C:\Users\adema\Desktop\新しいフォルダー (5)\ひな形\project\ImGui\imgui_draw.cpp;C:\Users\adema\Desktop\新しいフォルダー (5)\ひな形\project\project\x64\Debug\imgui_draw.obj
+C:\Users\adema\Desktop\新しいフォルダー (5)\ひな形\project\ImGui\imgui_impl_dx11.cpp;C:\Users\adema\Desktop\新しいフォルダー (5)\ひな形\project\project\x64\Debug\imgui_impl_dx11.obj
+C:\Users\adema\Desktop\新しいフォルダー (5)\ひな形\project\ImGui\imgui_impl_dx9.cpp;C:\Users\adema\Desktop\新しいフォルダー (5)\ひな形\project\project\x64\Debug\imgui_impl_dx9.obj
+C:\Users\adema\Desktop\新しいフォルダー (5)\ひな形\project\ImGui\imgui_impl_win32.cpp;C:\Users\adema\Desktop\新しいフォルダー (5)\ひな形\project\project\x64\Debug\imgui_impl_win32.obj
+C:\Users\adema\Desktop\新しいフォルダー (5)\ひな形\project\ImGui\imgui_ja_gryph_ranges.cpp;C:\Users\adema\Desktop\新しいフォルダー (5)\ひな形\project\project\x64\Debug\imgui_ja_gryph_ranges.obj
+C:\Users\adema\Desktop\新しいフォルダー (5)\ひな形\project\ImGui\imgui_tables.cpp;C:\Users\adema\Desktop\新しいフォルダー (5)\ひな形\project\project\x64\Debug\imgui_tables.obj
+C:\Users\adema\Desktop\新しいフォルダー (5)\ひな形\project\ImGui\imgui_widgets.cpp;C:\Users\adema\Desktop\新しいフォルダー (5)\ひな形\project\project\x64\Debug\imgui_widgets.obj
+C:\Users\adema\Desktop\新しいフォルダー (5)\ひな形\project\Library\App.cpp;C:\Users\adema\Desktop\新しいフォルダー (5)\ひな形\project\project\x64\Debug\App.obj
+C:\Users\adema\Desktop\新しいフォルダー (5)\ひな形\project\Library\main.cpp;C:\Users\adema\Desktop\新しいフォルダー (5)\ひな形\project\project\x64\Debug\main.obj
+C:\Users\adema\Desktop\新しいフォルダー (5)\ひな形\project\Library\ObjectManager.cpp;C:\Users\adema\Desktop\新しいフォルダー (5)\ひな形\project\project\x64\Debug\ObjectManager.obj
+C:\Users\adema\Desktop\新しいフォルダー (5)\ひな形\project\Library\SceneManager.cpp;C:\Users\adema\Desktop\新しいフォルダー (5)\ひな形\project\project\x64\Debug\SceneManager.obj
+C:\Users\adema\Desktop\新しいフォルダー (5)\ひな形\project\Library\Time.cpp;C:\Users\adema\Desktop\新しいフォルダー (5)\ひな形\project\project\x64\Debug\Time.obj
+C:\Users\adema\Desktop\新しいフォルダー (5)\ひな形\project\Source\Battle.cpp;C:\Users\adema\Desktop\新しいフォルダー (5)\ひな形\project\project\x64\Debug\Battle.obj
+C:\Users\adema\Desktop\新しいフォルダー (5)\ひな形\project\Source\BootScene.cpp;C:\Users\adema\Desktop\新しいフォルダー (5)\ひな形\project\project\x64\Debug\BootScene.obj
+C:\Users\adema\Desktop\新しいフォルダー (5)\ひな形\project\Source\Card.cpp;C:\Users\adema\Desktop\新しいフォルダー (5)\ひな形\project\project\x64\Debug\Card.obj
+C:\Users\adema\Desktop\新しいフォルダー (5)\ひな形\project\Source\Character.cpp;C:\Users\adema\Desktop\新しいフォルダー (5)\ひな形\project\project\x64\Debug\Character.obj
+C:\Users\adema\Desktop\新しいフォルダー (5)\ひな形\project\Source\Defend.cpp;C:\Users\adema\Desktop\新しいフォルダー (5)\ひな形\project\project\x64\Debug\Defend.obj
+C:\Users\adema\Desktop\新しいフォルダー (5)\ひな形\project\Source\Enemy.cpp;C:\Users\adema\Desktop\新しいフォルダー (5)\ひな形\project\project\x64\Debug\Enemy.obj
+C:\Users\adema\Desktop\新しいフォルダー (5)\ひな形\project\Source\ImageManager.cpp;C:\Users\adema\Desktop\新しいフォルダー (5)\ひな形\project\project\x64\Debug\ImageManager.obj
+C:\Users\adema\Desktop\新しいフォルダー (5)\ひな形\project\Source\Player.cpp;C:\Users\adema\Desktop\新しいフォルダー (5)\ひな形\project\project\x64\Debug\Player.obj
+C:\Users\adema\Desktop\新しいフォルダー (5)\ひな形\project\Source\PlayScene.cpp;C:\Users\adema\Desktop\新しいフォルダー (5)\ひな形\project\project\x64\Debug\PlayScene.obj
+C:\Users\adema\Desktop\新しいフォルダー (5)\ひな形\project\Source\SceneFactory.cpp;C:\Users\adema\Desktop\新しいフォルダー (5)\ひな形\project\project\x64\Debug\SceneFactory.obj
+C:\Users\adema\Desktop\新しいフォルダー (5)\ひな形\project\Source\SettingGame.cpp;C:\Users\adema\Desktop\新しいフォルダー (5)\ひな形\project\project\x64\Debug\SettingGame.obj
+C:\Users\adema\Desktop\新しいフォルダー (5)\ひな形\project\Source\Strike.cpp;C:\Users\adema\Desktop\新しいフォルダー (5)\ひな形\project\project\x64\Debug\Strike.obj
+C:\Users\adema\Desktop\新しいフォルダー (5)\ひな形\project\Source\TitleScene.cpp;C:\Users\adema\Desktop\新しいフォルダー (5)\ひな形\project\project\x64\Debug\TitleScene.obj
