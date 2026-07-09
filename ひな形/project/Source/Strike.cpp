@@ -8,15 +8,16 @@ Strike::Strike()
 {
 }
 
-void Strike::Use(Player& player, Enemy& enemy)
+bool Strike::Use(Player& player, Enemy& enemy)
 {
     if (player.Enargy < cost)
     {
-        return;
+        return false;
     }
 
     player.Enargy -= cost;
 
     int damage = 6;
     enemy.TakeDamage(damage);
+	return true;
 }

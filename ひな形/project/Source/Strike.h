@@ -7,5 +7,5 @@ class Strike : public Card
 public:
     Strike();
 
-    void Use(Player& player, Enemy& enemy) override;
+    bool Use(Player& player, Enemy& enemy) override;
 };

@@ -7,5 +7,5 @@ class Defend : public Card
 public:
     Defend();
 
-    void Use(Player& player, Enemy& enemy) override;
+    bool Use(Player& player, Enemy& enemy) override;
 };

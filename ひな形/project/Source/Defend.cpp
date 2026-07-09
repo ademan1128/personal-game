@@ -6,13 +6,14 @@ Defend::Defend()
 {
 }
 
-void Defend::Use(Player& player, Enemy&)
+bool Defend::Use(Player& player, Enemy&)
 {
     if (player.Enargy < cost)
     {
-        return;
+        return false;
     }
 
     player.Enargy -= cost;
     player.Block += 5;
+	return true;
 }

@@ -4,6 +4,8 @@
 /// Windowの定義をします
 /// </summary>
 //#define FIX_FRAME_RATE  // フレームレートを固定にする
+
+
 namespace Screen
 {
 	static const int WIDTH = 1280;

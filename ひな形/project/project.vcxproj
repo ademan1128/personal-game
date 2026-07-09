@@ -194,6 +194,11 @@
     <ClCompile Include="Source\Strike.cpp" />
     <ClCompile Include="Source\TitleScene.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="image\defense.png" />
+    <Image Include="image\haikei0.png" />
+    <Image Include="image\strike.png" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

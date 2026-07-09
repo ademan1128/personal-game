@@ -18,5 +18,5 @@ public:
 
     virtual ~Card() = default;
 
-    virtual void Use(Player& player, Enemy& enemy) = 0;
+    virtual bool Use(Player& player, Enemy& enemy) = 0;
 };

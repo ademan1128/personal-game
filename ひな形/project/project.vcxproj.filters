@@ -189,4 +189,9 @@
       <UniqueIdentifier>{a713fb6a-668b-406e-917f-c662a3b1e174}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="image\defense.png" />
+    <Image Include="image\haikei0.png" />
+    <Image Include="image\strike.png" />
+  </ItemGroup>
 </Project>
