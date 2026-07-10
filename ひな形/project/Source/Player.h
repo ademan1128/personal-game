@@ -10,5 +10,6 @@ public:
 
     Player();
 
-    void Attack(Enemy& enemy);
+    void Attack(Enemy& enemy);/*
+    auto GetEnargy() const{ return Enargy; }*/
 };

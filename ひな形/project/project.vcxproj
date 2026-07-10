@@ -165,6 +165,7 @@
     <ClInclude Include="Source\SceneFactory.h" />
     <ClInclude Include="Source\Strike.h" />
     <ClInclude Include="Source\TitleScene.h" />
+    <ClInclude Include="Source\Trigger.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ImGui\imgui.cpp" />
@@ -193,6 +194,7 @@
     <ClCompile Include="Source\SettingGame.cpp" />
     <ClCompile Include="Source\Strike.cpp" />
     <ClCompile Include="Source\TitleScene.cpp" />
+    <ClCompile Include="Source\Trigger.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="image\defense.png" />

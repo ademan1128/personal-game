@@ -23,12 +23,13 @@ public:
 	std::vector<Card*> discardPile;
 
 	bool playerTurn = true;
-
+	bool NoCost = false;
 	PlayScene();
 	~PlayScene();
 	void Update() override;
 	void Draw() override;
-
+	int FontC;
+	int FontN;
 };
 
 class Input

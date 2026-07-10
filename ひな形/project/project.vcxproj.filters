@@ -77,6 +77,7 @@
     <ClCompile Include="Source\ImageManager.cpp">
       <Filter>PlayScene\.cpp</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Trigger.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Screen.h" />
@@ -165,6 +166,7 @@
     <ClInclude Include="Source\ImageManager.h">
       <Filter>PlayScene\.h</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Trigger.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Library">

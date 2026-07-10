@@ -1,9 +1,9 @@
 #include "PlayScene.h"
 #include "ImageManager.h"
-
+#include "Trigger.h"
 
 //static変数の定義と初期化
-char Input::Pushing[256] = {};  
+char Input::Pushing[256] = {};
 char Input::Pushed[256] = {};
 
 
@@ -20,6 +20,9 @@ PlayScene::PlayScene()
 	DrawCardWithShuffle(deck, discardPile, hand, 5);
 
 	playerTurn = true;
+	NoCost = true;
+
+
 }
 
 PlayScene::~PlayScene()
@@ -30,30 +33,30 @@ void PlayScene::Update()
 {
 	Input::Update();
 
-	if (Input::Trigger(KEY_INPUT_0))
+	if (KeyTrigger::CheckTrigger(KEY_INPUT_0))
 	{
 		playerTurn = false;
 	}
 
 
-	if (Input::Trigger(KEY_INPUT_1))
+	if (KeyTrigger::CheckTrigger(KEY_INPUT_1))
 	{
 		if (hand.size() > 0)
 		{
-			if (hand[0]->Use(player, enemy)) 
+			if (hand[0]->Use(player, enemy))
 			{
 				discardPile.push_back(hand[0]);
 				hand.erase(hand.begin() + 0);
 			}
 			else
 			{
-				DrawFormatString(0, 80, GetColor(255, 255, 255), "コストが足りません");
+				NoCost = false;
 			}
 		}
 	}
 
 	// 2キー
-	if (Input::Trigger(KEY_INPUT_2))
+	if (KeyTrigger::CheckTrigger(KEY_INPUT_2))
 	{
 		if (hand.size() > 1)
 		{
@@ -64,13 +67,13 @@ void PlayScene::Update()
 			}
 			else
 			{
-				DrawFormatString(0, 80, GetColor(255, 255, 255), "コストが足りません");
+				NoCost = false;
 			}
 		}
 	}
 
 	// 3キー
-	if (Input::Trigger(KEY_INPUT_3))
+	if (KeyTrigger::CheckTrigger(KEY_INPUT_3))
 	{
 		if (hand.size() > 2)
 		{
@@ -81,12 +84,13 @@ void PlayScene::Update()
 			}
 			else
 			{
-				DrawFormatString(0, 80, GetColor(255, 255, 255), "コストが足りません");
+				NoCost = false;
 			}
 		}
 	}
 
-	if (Input::Trigger(KEY_INPUT_4))
+	// 4キー
+	if (KeyTrigger::CheckTrigger(KEY_INPUT_4))
 	{
 		if (hand.size() > 3)
 		{
@@ -97,12 +101,14 @@ void PlayScene::Update()
 			}
 			else
 			{
-				DrawFormatString(0, 80, GetColor(255, 255, 255), "コストが足りません");
+				NoCost = false;
 			}
 		}
 	}
 
-	if (Input::Trigger(KEY_INPUT_5))
+
+	//5キー
+	if (KeyTrigger::CheckTrigger(KEY_INPUT_5))
 	{
 		if (hand.size() > 4)
 		{
@@ -113,7 +119,7 @@ void PlayScene::Update()
 			}
 			else
 			{
-				DrawFormatString(0, 80, GetColor(255, 255, 255), "コストが足りません");
+				NoCost = false;
 			}
 		}
 	}
@@ -137,12 +143,16 @@ void PlayScene::Update()
 		DrawCardWithShuffle(deck, discardPile, hand, 5);
 
 		playerTurn = true;
+		NoCost = true;
 	}
 }
 
 void PlayScene::Draw()
 {
-	DrawExtendGraph(0, 0,1920,1080,ImageManager::haikeiImage, TRUE);
+	Player* p = FindGameObject<Player>();
+	DrawExtendGraph(0, 0, 1920, 708, ImageManager::haikeiImage, TRUE);
+	FontC = CreateFontToHandle(NULL, 48, 2, DX_FONTTYPE_NORMAL);
+	DrawExtendFormatStringToHandle(100, 540, 2,2,GetColor(255, 255, 255), GetDefaultFontHandle(), "cost:", player.Enargy);
 
 	DrawFormatString(
 		0, 30,
@@ -156,20 +166,21 @@ void PlayScene::Draw()
 		enemy.HP);
 	for (int i = 0; i < hand.size(); i++)
 	{
-		int x = 100 + i * 120; 
-		int y = 500;
+		int x = 216 + i * 300;
+		int y = 700;
 
 		DrawExtendGraph(
 			x, y,          // 左上
-			x + 100,       // 右
-			y + 150,       // 下
+			x + 200,       // 右
+			y + 300,       // 下
 			hand[i]->imageHandle,
 			TRUE);
 	}
-	if (!hand.empty())
+
+	if (NoCost == false)
 	{
-		DrawFormatString(0, 100, GetColor(255, 255, 255),
-			"HandImage=%d", hand[0]->imageHandle);
+		 FontN = CreateFontToHandle("メイリオ", 48, 2, DX_FONTTYPE_NORMAL);
+		 DrawStringToHandle(750, 540, "コストが足りません", GetColor(255, 255, 255), FontC);
 	}
 }
 
