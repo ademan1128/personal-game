@@ -20,9 +20,8 @@ PlayScene::PlayScene()
 	DrawCardWithShuffle(deck, discardPile, hand, 5);
 
 	playerTurn = true;
-	NoCost = true;
-
-
+	
+	noCost = false;
 }
 
 PlayScene::~PlayScene()
@@ -31,7 +30,13 @@ PlayScene::~PlayScene()
 
 void PlayScene::Update()
 {
+
+
 	Input::Update();
+
+	if (player.Enargy == 0) {
+		noCost = true;
+	}
 
 	if (KeyTrigger::CheckTrigger(KEY_INPUT_0))
 	{
@@ -50,7 +55,7 @@ void PlayScene::Update()
 			}
 			else
 			{
-				NoCost = false;
+				noCost = true;
 			}
 		}
 	}
@@ -67,7 +72,7 @@ void PlayScene::Update()
 			}
 			else
 			{
-				NoCost = false;
+				noCost = true;
 			}
 		}
 	}
@@ -84,7 +89,7 @@ void PlayScene::Update()
 			}
 			else
 			{
-				NoCost = false;
+				noCost = true;
 			}
 		}
 	}
@@ -101,7 +106,7 @@ void PlayScene::Update()
 			}
 			else
 			{
-				NoCost = false;
+				noCost = true;
 			}
 		}
 	}
@@ -119,14 +124,14 @@ void PlayScene::Update()
 			}
 			else
 			{
-				NoCost = false;
+				noCost = true;
 			}
 		}
 	}
 
 	if (!playerTurn)
 	{
-
+		noCost = false;
 		enemy.Attack(player);
 
 
@@ -143,8 +148,9 @@ void PlayScene::Update()
 		DrawCardWithShuffle(deck, discardPile, hand, 5);
 
 		playerTurn = true;
-		NoCost = true;
+
 	}
+
 }
 
 void PlayScene::Draw()
@@ -152,7 +158,9 @@ void PlayScene::Draw()
 	Player* p = FindGameObject<Player>();
 	DrawExtendGraph(0, 0, 1920, 708, ImageManager::haikeiImage, TRUE);
 	FontC = CreateFontToHandle(NULL, 48, 2, DX_FONTTYPE_NORMAL);
-	DrawExtendFormatStringToHandle(100, 540, 2,2,GetColor(255, 255, 255), GetDefaultFontHandle(), "cost:", player.Enargy);
+	DrawExtendFormatStringToHandle(50, 740, 2, 2, GetColor(255, 255, 255), GetDefaultFontHandle(), "cost:%d", player.Enargy);
+	if (noCost)
+		DrawString(0, 100, "A", GetColor(255, 255, 255), 1);
 
 	DrawFormatString(
 		0, 30,
@@ -177,10 +185,10 @@ void PlayScene::Draw()
 			TRUE);
 	}
 
-	if (NoCost == false)
+	if (noCost)
 	{
-		 FontN = CreateFontToHandle("メイリオ", 48, 2, DX_FONTTYPE_NORMAL);
-		 DrawStringToHandle(750, 540, "コストが足りません", GetColor(255, 255, 255), FontC);
+		FontN = CreateFontToHandle("メイリオ", 48, 2, DX_FONTTYPE_NORMAL);
+		DrawStringToHandle(750, 540, "コストが足りません", GetColor(255, 255, 255), FontN);
 	}
 }
 

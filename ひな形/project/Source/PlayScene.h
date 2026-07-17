@@ -23,11 +23,11 @@ public:
 	std::vector<Card*> discardPile;
 
 	bool playerTurn = true;
-	bool NoCost = false;
 	PlayScene();
 	~PlayScene();
 	void Update() override;
 	void Draw() override;
+	bool noCost;
 	int FontC;
 	int FontN;
 };
