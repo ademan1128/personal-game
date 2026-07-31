@@ -22,10 +22,14 @@ PlayScene::PlayScene()
 	playerTurn = true;
 	
 	noCost = false;
+
+	FontC = CreateFontToHandle(NULL, 48, 2, DX_FONTTYPE_NORMAL);
+	FontN = CreateFontToHandle("メイリオ", 48, 2, DX_FONTTYPE_NORMAL);
 }
 
 PlayScene::~PlayScene()
 {
+	DeleteFontToHandle(FontN);
 }
 
 void PlayScene::Update()
@@ -34,7 +38,7 @@ void PlayScene::Update()
 
 	Input::Update();
 
-	if (player.Enargy == 0) {
+	if (player.Enargy <= 0) {
 		noCost = true;
 	}
 
@@ -157,38 +161,31 @@ void PlayScene::Draw()
 {
 	Player* p = FindGameObject<Player>();
 	DrawExtendGraph(0, 0, 1920, 708, ImageManager::haikeiImage, TRUE);
-	FontC = CreateFontToHandle(NULL, 48, 2, DX_FONTTYPE_NORMAL);
-	DrawExtendFormatStringToHandle(50, 740, 2, 2, GetColor(255, 255, 255), GetDefaultFontHandle(), "cost:%d", player.Enargy);
-	if (noCost)
-		DrawString(0, 100, "A", GetColor(255, 255, 255), 1);
 
-	DrawFormatString(
-		0, 30,
-		GetColor(255, 255, 255),
-		"Player HP : %d",
-		player.HP);
-	DrawFormatString(
-		100, 60,
-		GetColor(255, 255, 255),
-		"Enemy HP : %d",
-		enemy.HP);
+	//DrawExtendGraph(0, 0, 64, 64, , TRUE);
+
+
+	DrawExtendFormatStringToHandle(50, 740, 2, 2, GetColor(255, 255, 255), GetDefaultFontHandle(), "cost:%d", player.Enargy);
+
+
+	DrawFormatString(0, 30,GetColor(255, 255, 255),"Player HP : %d",player.HP);
+	DrawFormatString(100, 60,GetColor(255, 255, 255),"Enemy HP : %d",enemy.HP);
 	for (int i = 0; i < hand.size(); i++)
 	{
 		int x = 216 + i * 300;
 		int y = 700;
 
-		DrawExtendGraph(
-			x, y,          // 左上
-			x + 200,       // 右
-			y + 300,       // 下
-			hand[i]->imageHandle,
-			TRUE);
+		DrawExtendGraph(x, y,x + 200,y + 300,hand[i]->imageHandle,TRUE);
 	}
 
 	if (noCost)
 	{
-		FontN = CreateFontToHandle("メイリオ", 48, 2, DX_FONTTYPE_NORMAL);
 		DrawStringToHandle(750, 540, "コストが足りません", GetColor(255, 255, 255), FontN);
 	}
+
 }
 
+void DrawPlayer()
+{
+
+};

@@ -78,6 +78,7 @@
       <Filter>PlayScene\.cpp</Filter>
     </ClCompile>
     <ClCompile Include="Source\Trigger.cpp" />
+    <ClCompile Include="Source\PlayerImageMove.h.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Screen.h" />
@@ -167,6 +168,7 @@
       <Filter>PlayScene\.h</Filter>
     </ClInclude>
     <ClInclude Include="Source\Trigger.h" />
+    <ClInclude Include="Source\PlayerImageMove.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Library">
@@ -195,5 +197,7 @@
     <Image Include="image\defense.png" />
     <Image Include="image\haikei0.png" />
     <Image Include="image\strike.png" />
+    <Image Include="image\enemy_1.png" />
+    <Image Include="image\enemy_2.png" />
   </ItemGroup>
 </Project>
