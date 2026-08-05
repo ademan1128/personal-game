@@ -10,8 +10,21 @@
 /// <summary>
 /// ゲームプレイのシーンを制御する
 /// </summary>
-/// 
-/// 
+
+enum class GameState
+{
+	PlayerTurn,
+	EnemyTurn,
+	GameOver
+};
+
+enum class PlayerState
+{
+	Idle,
+	Attacking,
+	Defending,
+};
+
 class PlayScene : public SceneBase
 {
 public:
@@ -31,6 +44,7 @@ public:
 	int FontC;
 	int FontN;
 };
+
 
 class Input
 {

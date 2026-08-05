@@ -10,4 +10,5 @@ void Enemy::Attack(Player& player)
 {
     int damage = 10;
     player.TakeDamage(damage);
+
 }

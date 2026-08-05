@@ -6,7 +6,8 @@
 char Input::Pushing[256] = {};
 char Input::Pushed[256] = {};
 
-
+void DrawPlayer();
+void DrawMovePlayer();
 
 PlayScene::PlayScene()
 {
@@ -164,6 +165,7 @@ void PlayScene::Draw()
 
 	//DrawExtendGraph(0, 0, 64, 64, , TRUE);
 
+	DrawPlayer();
 
 	DrawExtendFormatStringToHandle(50, 740, 2, 2, GetColor(255, 255, 255), GetDefaultFontHandle(), "cost:%d", player.Enargy);
 
@@ -187,5 +189,11 @@ void PlayScene::Draw()
 
 void DrawPlayer()
 {
+	DrawRectGraph(480, 540, 64, 64,64,64, ImageManager::enemy_1image,TRUE);
 
 };
+
+void DrawMovePlayer() 
+{
+
+}

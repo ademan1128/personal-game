@@ -14,5 +14,5 @@ void ImageManager::Load()
 	haikeiImage = LoadGraph("image/haikei0.png");
 
     enemy_1image = LoadGraph("image/enemy_1.png");
-
+    
 }

@@ -3,6 +3,7 @@
 Character::Character(int hp)
     : HP(hp), Block(0)
 {
+
 }
 
 void Character::TakeDamage(int damage)
