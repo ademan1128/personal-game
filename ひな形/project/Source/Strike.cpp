@@ -17,7 +17,7 @@ bool Strike::Use(Player& player, Enemy& enemy)
 
     player.Enargy -= cost;
 
-    int damage = 6;
+    int damage = 10;
     enemy.TakeDamage(damage);
 	return true;
 }

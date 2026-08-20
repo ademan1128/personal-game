@@ -79,6 +79,10 @@
     </ClCompile>
     <ClCompile Include="Source\Trigger.cpp" />
     <ClCompile Include="Source\PlayerImageMove.h.cpp" />
+    <ClCompile Include="Source\PlayUI.cpp" />
+    <ClCompile Include="Source\DamageText.cpp" />
+    <ClCompile Include="Source\Command.cpp" />
+    <ClCompile Include="Source\TurnManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Screen.h" />
@@ -169,6 +173,10 @@
     </ClInclude>
     <ClInclude Include="Source\Trigger.h" />
     <ClInclude Include="Source\PlayerImageMove.h" />
+    <ClInclude Include="Source\PlayUI.h" />
+    <ClInclude Include="Source\DamageText.h" />
+    <ClInclude Include="Source\Command.h" />
+    <ClInclude Include="Source\TurnManager.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Library">

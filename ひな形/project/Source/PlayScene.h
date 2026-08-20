@@ -6,7 +6,9 @@
 #include "Enemy.h"
 #include "Card.h"
 #include "Battle.h"
-
+#include "PlayUI.h"
+#include "Command.h"
+#include "TurnManager.h"
 /// <summary>
 /// ゲームプレイのシーンを制御する
 /// </summary>
@@ -18,18 +20,21 @@ enum class GameState
 	GameOver
 };
 
-enum class PlayerState
+enum class PlayerMoveState
 {
 	Idle,
-	Attacking,
-	Defending,
+	AttackMove,
+	ReturnMove
 };
 
 class PlayScene : public SceneBase
 {
 public:
+	PlayUI playUI;
+	Command command;
 	Player player;
 	Enemy enemy;
+	TurnManager turnManager;
 
 	std::vector<Card*> deck;
 	std::vector<Card*> hand;
@@ -40,9 +45,24 @@ public:
 	~PlayScene();
 	void Update() override;
 	void Draw() override;
-	bool noCost;
 	int FontC;
 	int FontN;
+
+	PlayerMoveState playerMoveState = PlayerMoveState::Idle;
+
+
+	float PlayerX = 480;
+	float PlayerY = 540;
+
+	const int playerStartX = 480;
+	const int playerAttackX = 700;
+
+	float playerSpeed = 0.0f;
+	float acceleration = 1.0f;
+
+	bool isAttacking = false;
+
+	void DrawPlayer();
 };
 
 

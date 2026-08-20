@@ -1,199 +1,291 @@
 #include "PlayScene.h"
 #include "ImageManager.h"
 #include "Trigger.h"
+#include "Strike.h"
 
-//static変数の定義と初期化
+// static変数の定義と初期化
 char Input::Pushing[256] = {};
 char Input::Pushed[256] = {};
 
-void DrawPlayer();
-void DrawMovePlayer();
+float inputInterval = 0.5f;   // インターバル
+float inputTimer = 0.0f;
 
-PlayScene::PlayScene()
+PlayScene::PlayScene() : turnManager(command)
 {
-	ImageManager::Load();
+    ImageManager::Load();
 
-	deck = CardShuffle();
+    deck = CardShuffle();
 
-	player.Enargy = 3;
-	player.Block = 0;
+    player.Enargy = 3;
+    player.Block = 0;
 
-	DrawCardWithShuffle(deck, discardPile, hand, 5);
+    DrawCardWithShuffle(deck, discardPile, hand, 5);
 
-	playerTurn = true;
-	
-	noCost = false;
 
-	FontC = CreateFontToHandle(NULL, 48, 2, DX_FONTTYPE_NORMAL);
-	FontN = CreateFontToHandle("メイリオ", 48, 2, DX_FONTTYPE_NORMAL);
+    FontC = CreateFontToHandle(NULL, 48, 2, DX_FONTTYPE_NORMAL);
+    FontN = CreateFontToHandle("メイリオ", 48, 2, DX_FONTTYPE_NORMAL);
 }
 
 PlayScene::~PlayScene()
 {
-	DeleteFontToHandle(FontN);
+    DeleteFontToHandle(FontN);
 }
 
 void PlayScene::Update()
 {
+    Input::Update();
+    command.Update();
+    turnManager.Update();
 
+    // PlayUI更新
+    playUI.Update();
 
-	Input::Update();
+    if (turnManager.IsPlayerTurn()) {
+        if (playerMoveState == PlayerMoveState::AttackMove)
+        {
+            PlayerX += playerSpeed;
+            playerSpeed += acceleration;
 
-	if (player.Enargy <= 0) {
-		noCost = true;
-	}
+            // 敵に到着
+            if (PlayerX >= playerAttackX)
+            {
+                PlayerX = playerAttackX;
 
-	if (KeyTrigger::CheckTrigger(KEY_INPUT_0))
-	{
-		playerTurn = false;
-	}
+                int damage = 10;
+                playUI.ShowDamage(damage);
 
+                playerSpeed = 5.0f;
 
-	if (KeyTrigger::CheckTrigger(KEY_INPUT_1))
-	{
-		if (hand.size() > 0)
+                playerMoveState = PlayerMoveState::ReturnMove;
+            }
+        }
+        else if (playerMoveState == PlayerMoveState::ReturnMove)
+        {
+            PlayerX -= playerSpeed;
+            playerSpeed += acceleration;
+
+            // 元の位置に到着
+            if (PlayerX <= playerStartX)
+            {
+                PlayerX = playerStartX;
+
+                playerSpeed = 0.0f;
+
+                playerMoveState = PlayerMoveState::Idle;
+            }
+        }
+
+        if (inputTimer > 0.0f)
+        {
+            inputTimer -= 1.0f / 60.0f;
+        }
+
+        if (inputTimer > 0.0f)
+        {
+            return;
+        }
+
+        if (KeyTrigger::CheckTrigger(KEY_INPUT_0))
+        {
+            turnManager.EndPlayerTurn();
+        }
+
+        //1キー
+        if (KeyTrigger::CheckTrigger(KEY_INPUT_1))
+        {
+            if (hand.size() > 0)
+            {
+                Card* card = hand[0];
+
+                if (card->Use(player, enemy))
+                {
+                    // Strikeなら攻撃モーション開始
+                    if (dynamic_cast<Strike*>(card) != nullptr)
+                    {
+                        playerMoveState = PlayerMoveState::AttackMove;
+                        command.Attack("Playerの攻撃！");
+                        playerSpeed = 2.0f;
+                    }
+
+                    discardPile.push_back(card);
+                    hand.erase(hand.begin());
+
+                    inputTimer = inputInterval;
+                }
+                else
+                {
+                    command.Cost("コストが足りません");;
+                }
+            }
+        }
+
+        // 2キー
+        if (KeyTrigger::CheckTrigger(KEY_INPUT_2))
+        {
+            if (hand.size() > 1)
+            {
+                Card* card = hand[1];
+
+                if (card->Use(player, enemy))
+                {
+                    if (dynamic_cast<Strike*>(card) != nullptr)
+                    {
+                        playerMoveState = PlayerMoveState::AttackMove;
+                        command.Attack("Playerの攻撃！");
+                        playerSpeed = 2.0f;
+                    }
+
+                    discardPile.push_back(card);
+                    hand.erase(hand.begin() + 1);
+
+                    inputTimer = inputInterval;
+                }
+                else
+                {
+                    command.Cost("コストが足りません");;
+                }
+            }
+        }
+
+        // 3キー
+        if (KeyTrigger::CheckTrigger(KEY_INPUT_3))
+        {
+            if (hand.size() > 2)
+            {
+                Card* card = hand[2];
+
+                if (card->Use(player, enemy))
+                {
+                    if (dynamic_cast<Strike*>(card) != nullptr)
+                    {
+                        playerMoveState = PlayerMoveState::AttackMove;
+                        command.Attack("Playerの攻撃！");
+                        playerSpeed = 2.0f;
+                    }
+
+                    discardPile.push_back(card);
+                    hand.erase(hand.begin() + 2);
+
+                    inputTimer = inputInterval;
+                }
+                else
+                {
+                    command.Cost("コストが足りません");;
+                }
+            }
+        }
+
+        // 4キー
+        if (KeyTrigger::CheckTrigger(KEY_INPUT_4))
+        {
+            if (hand.size() > 3)
+            {
+                Card* card = hand[3];
+
+                if (card->Use(player, enemy))
+                {
+                    if (dynamic_cast<Strike*>(card) != nullptr)
+                    {
+                        playerMoveState = PlayerMoveState::AttackMove;
+                        command.Attack("Playerの攻撃！");
+                        playerSpeed = 2.0f;
+                    }
+
+                    discardPile.push_back(card);
+                    hand.erase(hand.begin() + 3);
+
+                    inputTimer = inputInterval;
+                }
+                else
+                {
+                    command.Cost("コストが足りません");;
+                }
+            }
+        }
+
+        // 5キー
+        if (KeyTrigger::CheckTrigger(KEY_INPUT_5))
+        {
+            if (hand.size() > 4)
+            {
+                Card* card = hand[4];
+
+                if (card->Use(player, enemy))
+                {
+                    if (dynamic_cast<Strike*>(card) != nullptr)
+                    {
+                        playerMoveState = PlayerMoveState::AttackMove;
+                        command.Attack("Playerの攻撃！");
+                        playerSpeed = 2.0f;
+                    }
+
+                    discardPile.push_back(card);
+                    hand.erase(hand.begin() + 4);
+
+                    inputTimer = inputInterval;
+                }
+                else
+                {
+                    command.Cost("コストが足りません");;
+                }
+            }
+        }
+
+    }
+
+    if (turnManager.CanEnemyAttack())
+    {
+
+        enemy.Attack(player);
+        command.Attack("Playerは10ダメージ受けた！");
+		if (player.HP <= 0)
 		{
-			if (hand[0]->Use(player, enemy))
-			{
-				discardPile.push_back(hand[0]);
-				hand.erase(hand.begin() + 0);
-			}
-			else
-			{
-				noCost = true;
-			}
+			command.Attack("Playerは倒れた！");
+
+			// ゲームオーバー処理
 		}
-	}
+        for (Card* card : hand)
+        {
+            discardPile.push_back(card);
+        }
 
-	// 2キー
-	if (KeyTrigger::CheckTrigger(KEY_INPUT_2))
-	{
-		if (hand.size() > 1)
-		{
-			if (hand[1]->Use(player, enemy))
-			{
-				discardPile.push_back(hand[1]);
-				hand.erase(hand.begin() + 1);
-			}
-			else
-			{
-				noCost = true;
-			}
-		}
-	}
+        hand.clear();
 
-	// 3キー
-	if (KeyTrigger::CheckTrigger(KEY_INPUT_3))
-	{
-		if (hand.size() > 2)
-		{
-			if (hand[2]->Use(player, enemy))
-			{
-				discardPile.push_back(hand[2]);
-				hand.erase(hand.begin() + 2);
-			}
-			else
-			{
-				noCost = true;
-			}
-		}
-	}
+        // 次のプレイヤーターンの準備
+        player.Enargy = 3;
+        player.Block = 0;
 
-	// 4キー
-	if (KeyTrigger::CheckTrigger(KEY_INPUT_4))
-	{
-		if (hand.size() > 3)
-		{
-			if (hand[3]->Use(player, enemy))
-			{
-				discardPile.push_back(hand[3]);
-				hand.erase(hand.begin() + 3);
-			}
-			else
-			{
-				noCost = true;
-			}
-		}
-	}
-
-
-	//5キー
-	if (KeyTrigger::CheckTrigger(KEY_INPUT_5))
-	{
-		if (hand.size() > 4)
-		{
-			if (hand[4]->Use(player, enemy))
-			{
-				discardPile.push_back(hand[4]);
-				hand.erase(hand.begin() + 4);
-			}
-			else
-			{
-				noCost = true;
-			}
-		}
-	}
-
-	if (!playerTurn)
-	{
-		noCost = false;
-		enemy.Attack(player);
-
-
-		for (Card* card : hand)
-		{
-			discardPile.push_back(card);
-		}
-		hand.clear();
-
-
-		player.Enargy = 3;
-		player.Block = 0;
-
-		DrawCardWithShuffle(deck, discardPile, hand, 5);
-
-		playerTurn = true;
-
-	}
-
+        DrawCardWithShuffle(deck, discardPile, hand, 5);
+    }
 }
+
 
 void PlayScene::Draw()
 {
-	Player* p = FindGameObject<Player>();
-	DrawExtendGraph(0, 0, 1920, 708, ImageManager::haikeiImage, TRUE);
+    DrawExtendGraph(0, 0,1920, 708,ImageManager::haikeiImage,TRUE);
 
-	//DrawExtendGraph(0, 0, 64, 64, , TRUE);
+    DrawPlayer();
+    playUI.Draw();
+	command.Draw();
 
-	DrawPlayer();
+    DrawExtendFormatStringToHandle(50, 740,2, 2, GetColor(255, 255, 255),GetDefaultFontHandle(), "cost:%d", player.Enargy);
 
-	DrawExtendFormatStringToHandle(50, 740, 2, 2, GetColor(255, 255, 255), GetDefaultFontHandle(), "cost:%d", player.Enargy);
+    DrawFormatString(0, 30,GetColor(255, 255, 255), "Player HP : %d", player.HP);
 
+    DrawFormatString(100, 60, GetColor(255, 255, 255),"Enemy HP : %d",enemy.HP);
 
-	DrawFormatString(0, 30,GetColor(255, 255, 255),"Player HP : %d",player.HP);
-	DrawFormatString(100, 60,GetColor(255, 255, 255),"Enemy HP : %d",enemy.HP);
-	for (int i = 0; i < hand.size(); i++)
-	{
-		int x = 216 + i * 300;
-		int y = 700;
+    for (int i = 0; i < hand.size(); i++)
+    {
+        int x = 216 + i * 300;
+        int y = 750;
 
-		DrawExtendGraph(x, y,x + 200,y + 300,hand[i]->imageHandle,TRUE);
-	}
-
-	if (noCost)
-	{
-		DrawStringToHandle(750, 540, "コストが足りません", GetColor(255, 255, 255), FontN);
-	}
+        DrawExtendGraph(x, y, x + 200, y + 300, hand[i]->imageHandle,TRUE);
+    }
 
 }
 
-void DrawPlayer()
+
+void PlayScene::DrawPlayer()
 {
-	DrawRectGraph(480, 540, 64, 64,64,64, ImageManager::enemy_1image,TRUE);
-
-};
-
-void DrawMovePlayer() 
-{
-
+    DrawRectGraph( PlayerX, PlayerY,64, 64,64, 64,ImageManager::enemy_1image,TRUE);
 }
