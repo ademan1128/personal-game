@@ -56,6 +56,8 @@ public:
 
 	const int playerStartX = 480;
 	const int playerAttackX = 700;
+	bool isGameOver = false;
+	float gameOverTimer = 0.0f;
 
 	float playerSpeed = 0.0f;
 	float acceleration = 1.0f;

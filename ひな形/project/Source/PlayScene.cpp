@@ -33,6 +33,18 @@ PlayScene::~PlayScene()
 
 void PlayScene::Update()
 {
+
+    if (isGameOver)
+    {
+        gameOverTimer += 1.0f / 60.0f;
+
+        if (gameOverTimer >= 2.0f)
+        {
+            SceneManager::ChangeScene("Title");
+        }
+
+        return;
+    }
     Input::Update();
     command.Update();
     turnManager.Update();
@@ -68,9 +80,7 @@ void PlayScene::Update()
             if (PlayerX <= playerStartX)
             {
                 PlayerX = playerStartX;
-
                 playerSpeed = 0.0f;
-
                 playerMoveState = PlayerMoveState::Idle;
             }
         }
@@ -109,6 +119,14 @@ void PlayScene::Update()
 
                     discardPile.push_back(card);
                     hand.erase(hand.begin());
+                    if (enemy.HP <= 0)
+                    {
+                        command.Attack("Enemyは倒れた！");
+                        command.Attack("GAMECLEAR！");
+
+                        SceneManager::ChangeScene("Title");
+                        return;
+                    }
 
                     inputTimer = inputInterval;
                 }
@@ -137,7 +155,14 @@ void PlayScene::Update()
 
                     discardPile.push_back(card);
                     hand.erase(hand.begin() + 1);
+                    if (enemy.HP <= 0)
+                    {
+                        command.Attack("Enemyは倒れた！");
+                        command.Attack("GAMECLEAR！");
 
+                        SceneManager::ChangeScene("Title");
+                        return;
+                    }
                     inputTimer = inputInterval;
                 }
                 else
@@ -165,7 +190,14 @@ void PlayScene::Update()
 
                     discardPile.push_back(card);
                     hand.erase(hand.begin() + 2);
+                    if (enemy.HP <= 0)
+                    {
+                        command.Attack("Enemyは倒れた！");
+                        command.Attack("GAMECLEAR！");
 
+                        SceneManager::ChangeScene("Title");
+                        return;
+                    }
                     inputTimer = inputInterval;
                 }
                 else
@@ -193,7 +225,14 @@ void PlayScene::Update()
 
                     discardPile.push_back(card);
                     hand.erase(hand.begin() + 3);
+                    if (enemy.HP <= 0)
+                    {
+                        command.Attack("Enemyは倒れた！");
+                        command.Attack("GAMECLEAR！");
 
+                        SceneManager::ChangeScene("Title");
+                        return;
+                    }
                     inputTimer = inputInterval;
                 }
                 else
@@ -221,7 +260,14 @@ void PlayScene::Update()
 
                     discardPile.push_back(card);
                     hand.erase(hand.begin() + 4);
+                    if (enemy.HP <= 0)
+                    {
+                        command.Attack("Enemyは倒れた！");
+                        command.Attack("GAMECLEAR！");
 
+                        SceneManager::ChangeScene("Title");
+                        return;
+                    }
                     inputTimer = inputInterval;
                 }
                 else
@@ -238,12 +284,15 @@ void PlayScene::Update()
 
         enemy.Attack(player);
         command.Attack("Playerは10ダメージ受けた！");
-		if (player.HP <= 0)
-		{
-			command.Attack("Playerは倒れた！");
+        if (player.HP <= 0)
+        {
+            command.Attack("Playerは倒れた！");
+            command.Attack("GAMEOVER！");
 
-			// ゲームオーバー処理
-		}
+            isGameOver = true;
+            gameOverTimer = 0.0f;
+            return;
+        }
         for (Card* card : hand)
         {
             discardPile.push_back(card);
@@ -283,7 +332,6 @@ void PlayScene::Draw()
     }
 
 }
-
 
 void PlayScene::DrawPlayer()
 {

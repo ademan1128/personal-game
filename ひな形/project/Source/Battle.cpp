@@ -1,7 +1,6 @@
 #include "Battle.h"
 #include "Strike.h"
 #include "Defend.h"
-
 #include <algorithm>
 #include <random>
 
