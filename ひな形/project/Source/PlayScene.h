@@ -55,9 +55,11 @@ public:
 	float PlayerY = 540;
 
 	const int playerStartX = 480;
-	const int playerAttackX = 700;
+	const int playerAttackX = 1260;
 	bool isGameOver = false;
 	float gameOverTimer = 0.0f;
+	bool isGameClear = false;
+	float gameClearTimer = 0.0f;
 
 	float playerSpeed = 0.0f;
 	float acceleration = 1.0f;
@@ -65,6 +67,7 @@ public:
 	bool isAttacking = false;
 
 	void DrawPlayer();
+	void DrawEnemy();
 };
 
 

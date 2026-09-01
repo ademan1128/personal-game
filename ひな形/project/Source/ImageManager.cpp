@@ -4,8 +4,8 @@
 int ImageManager::strikeImage = -1;
 int ImageManager::defendImage = -1;
 int ImageManager::haikeiImage = -1;
-int ImageManager::enemy_1image = -1;
-
+int ImageManager::characterimage = -1;
+int ImageManager::enemyimage = -1;
 void ImageManager::Load()
 {
     //strikeImage = LoadGraph("../../project/image/strike.png");
@@ -13,6 +13,7 @@ void ImageManager::Load()
     strikeImage = LoadGraph("image/strike.png");
 	haikeiImage = LoadGraph("image/haikei0.png");
 
-    enemy_1image = LoadGraph("image/enemy_1.png");
-    
+    characterimage = LoadGraph("image/character.png");
+    enemyimage = LoadGraph("image/enemy_1.png");
+
 }

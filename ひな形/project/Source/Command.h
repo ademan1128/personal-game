@@ -19,7 +19,7 @@ private:
     std::string currentMessage;
 
     int timer = 0;
-    int displayTime = 30;
+    int displayTime = 60;
 
     int fontHandle;
 };

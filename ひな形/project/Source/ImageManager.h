@@ -6,6 +6,7 @@ public:
     static int strikeImage;
     static int defendImage;
     static int haikeiImage;
-    static int enemy_1image;
+    static int characterimage;
+	static int enemyimage;
     static void Load();
 };

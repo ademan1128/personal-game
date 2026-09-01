@@ -1,3 +1,4 @@
+#include "SceneFactory.h"
 #include "PlayScene.h"
 #include "ImageManager.h"
 #include "Trigger.h"
@@ -33,9 +34,37 @@ PlayScene::~PlayScene()
 
 void PlayScene::Update()
 {
+    // ÉQÅ[ÉÄÉNÉäÉAíÜ
+    if (isGameClear)
+    {
+        command.Update();
+
+        gameClearTimer += 1.0f / 60.0f;
+
+        if (gameClearTimer >= 3.0f)
+        {
+            SceneManager::ChangeScene("TITLE");
+        }
+
+        return;
+    }
+
+    // ìGÇì|ÇµÇΩ
+    if (enemy.HP <= 0)
+    {
+        command.Attack("EnemyÇÕì|ÇÍÇΩÅI");
+        command.Attack("GAMECLEARÅI");
+
+        isGameClear = true;
+        gameClearTimer = 0.0f;
+
+        return;
+    }
 
     if (isGameOver)
     {
+        command.Update();
+
         gameOverTimer += 1.0f / 60.0f;
 
         if (gameOverTimer >= 2.0f)
@@ -45,6 +74,7 @@ void PlayScene::Update()
 
         return;
     }
+
     Input::Update();
     command.Update();
     turnManager.Update();
@@ -124,7 +154,9 @@ void PlayScene::Update()
                         command.Attack("EnemyÇÕì|ÇÍÇΩÅI");
                         command.Attack("GAMECLEARÅI");
 
-                        SceneManager::ChangeScene("Title");
+                        isGameClear = true;
+                        gameClearTimer = 0.0f;
+
                         return;
                     }
 
@@ -160,7 +192,9 @@ void PlayScene::Update()
                         command.Attack("EnemyÇÕì|ÇÍÇΩÅI");
                         command.Attack("GAMECLEARÅI");
 
-                        SceneManager::ChangeScene("Title");
+                        isGameClear = true;
+                        gameClearTimer = 0.0f;
+
                         return;
                     }
                     inputTimer = inputInterval;
@@ -195,7 +229,9 @@ void PlayScene::Update()
                         command.Attack("EnemyÇÕì|ÇÍÇΩÅI");
                         command.Attack("GAMECLEARÅI");
 
-                        SceneManager::ChangeScene("Title");
+                        isGameClear = true;
+                        gameClearTimer = 0.0f;
+
                         return;
                     }
                     inputTimer = inputInterval;
@@ -230,7 +266,9 @@ void PlayScene::Update()
                         command.Attack("EnemyÇÕì|ÇÍÇΩÅI");
                         command.Attack("GAMECLEARÅI");
 
-                        SceneManager::ChangeScene("Title");
+                        isGameClear = true;
+                        gameClearTimer = 0.0f;
+
                         return;
                     }
                     inputTimer = inputInterval;
@@ -265,7 +303,9 @@ void PlayScene::Update()
                         command.Attack("EnemyÇÕì|ÇÍÇΩÅI");
                         command.Attack("GAMECLEARÅI");
 
-                        SceneManager::ChangeScene("Title");
+                        isGameClear = true;
+                        gameClearTimer = 0.0f;
+
                         return;
                     }
                     inputTimer = inputInterval;
@@ -313,6 +353,7 @@ void PlayScene::Draw()
 {
     DrawExtendGraph(0, 0,1920, 708,ImageManager::haikeiImage,TRUE);
 
+	DrawEnemy();
     DrawPlayer();
     playUI.Draw();
 	command.Draw();
@@ -335,5 +376,10 @@ void PlayScene::Draw()
 
 void PlayScene::DrawPlayer()
 {
-    DrawRectGraph( PlayerX, PlayerY,64, 64,64, 64,ImageManager::enemy_1image,TRUE);
+    DrawRotaGraph( PlayerX, PlayerY,0.25, 0,ImageManager::characterimage,TRUE);
+}
+
+void PlayScene::DrawEnemy()
+{
+    DrawRectGraph(1260, 540, 64, 64, 64, 64, ImageManager::enemyimage, TRUE);
 }
