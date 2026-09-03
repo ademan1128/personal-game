@@ -70,7 +70,7 @@ void PlayScene::Update()
 
         if (gameOverTimer >= 2.0f)
         {
-            SceneManager::ChangeScene("Title");
+            SceneManager::ChangeScene("TITLE");
         }
 
         return;

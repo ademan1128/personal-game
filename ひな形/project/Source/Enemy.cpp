@@ -9,7 +9,7 @@ int GetRandomValue()
 }
 
 Enemy::Enemy()
-    : Character(50)
+    : Character(70)
 {
 
 }
