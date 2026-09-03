@@ -8,5 +8,6 @@ public:
     static int haikeiImage;
     static int characterimage;
 	static int enemyimage;
+	static int titleImage;
     static void Load();
 };

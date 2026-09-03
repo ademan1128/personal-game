@@ -9,4 +9,5 @@ public:
     Enemy();
 
     void Attack(Player& player);
+    int damage = 0;
 };

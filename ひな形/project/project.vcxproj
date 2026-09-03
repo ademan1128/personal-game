@@ -207,10 +207,14 @@
     <ClCompile Include="Source\TurnManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="image\attak.png" />
+    <Image Include="image\block.png" />
+    <Image Include="image\character_oji_03_blue_brown.png" />
     <Image Include="image\defense.png" />
     <Image Include="image\enemy_1.png" />
     <Image Include="image\enemy_2.png" />
     <Image Include="image\haikei0.png" />
+    <Image Include="image\haikei1.png" />
     <Image Include="image\strike.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

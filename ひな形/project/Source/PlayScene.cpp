@@ -3,6 +3,7 @@
 #include "ImageManager.h"
 #include "Trigger.h"
 #include "Strike.h"
+#include "Defend.h"
 
 // static変数の定義と初期化
 char Input::Pushing[256] = {};
@@ -147,6 +148,11 @@ void PlayScene::Update()
                         playerSpeed = 2.0f;
                     }
 
+                    if (dynamic_cast<Defend*>(card) != nullptr)
+                    {
+                        command.Attack("シールドを5入手！");
+                    }
+
                     discardPile.push_back(card);
                     hand.erase(hand.begin());
                     if (enemy.HP <= 0)
@@ -183,6 +189,11 @@ void PlayScene::Update()
                         playerMoveState = PlayerMoveState::AttackMove;
                         command.Attack("Playerの攻撃！");
                         playerSpeed = 2.0f;
+                    }
+
+                    if (dynamic_cast<Defend*>(card) != nullptr)
+                    {
+                        command.Attack("シールドを5入手！");
                     }
 
                     discardPile.push_back(card);
@@ -222,6 +233,11 @@ void PlayScene::Update()
                         playerSpeed = 2.0f;
                     }
 
+                    if (dynamic_cast<Defend*>(card) != nullptr)
+                    {
+                        command.Attack("シールドを5入手！");
+                    }
+
                     discardPile.push_back(card);
                     hand.erase(hand.begin() + 2);
                     if (enemy.HP <= 0)
@@ -257,6 +273,11 @@ void PlayScene::Update()
                         playerMoveState = PlayerMoveState::AttackMove;
                         command.Attack("Playerの攻撃！");
                         playerSpeed = 2.0f;
+                    }
+
+                    if (dynamic_cast<Defend*>(card) != nullptr)
+                    {
+                        command.Attack("シールドを5入手！");
                     }
 
                     discardPile.push_back(card);
@@ -296,6 +317,11 @@ void PlayScene::Update()
                         playerSpeed = 2.0f;
                     }
 
+                    if (dynamic_cast<Defend*>(card) != nullptr)
+                    {
+                        command.Attack("シールドを5入手！");
+                    }
+
                     discardPile.push_back(card);
                     hand.erase(hand.begin() + 4);
                     if (enemy.HP <= 0)
@@ -323,7 +349,8 @@ void PlayScene::Update()
     {
 
         enemy.Attack(player);
-        command.Attack("Playerは10ダメージ受けた！");
+        command.Attack(std::string("Playerは") +std::to_string(enemy.damage) +"ダメージ受けた！");
+
         if (player.HP <= 0)
         {
             command.Attack("Playerは倒れた！");
@@ -360,9 +387,10 @@ void PlayScene::Draw()
 
     DrawExtendFormatStringToHandle(50, 740,2, 2, GetColor(255, 255, 255),GetDefaultFontHandle(), "cost:%d", player.Enargy);
 
-    DrawFormatString(0, 30,GetColor(255, 255, 255), "Player HP : %d", player.HP);
+    DrawFormatString(480, 430,GetColor(0, 0, 0), "Player HP : %d", player.HP);
+    DrawFormatString(480, 450, GetColor(0, 0, 0), "Player Block : %d", player.Block);
 
-    DrawFormatString(100, 60, GetColor(255, 255, 255),"Enemy HP : %d",enemy.HP);
+    DrawFormatString(1260, 440, GetColor(0, 0, 0),"Enemy HP : %d",enemy.HP);
 
     for (int i = 0; i < hand.size(); i++)
     {

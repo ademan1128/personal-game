@@ -1,14 +1,22 @@
 #include "Enemy.h"
 #include "Player.h"
+#include <cstdlib>
+
+int GetRandomValue()
+{
+    int values[] = { 5, 10, 15, 20, 30 };
+    return values[rand() % 5];
+}
 
 Enemy::Enemy()
     : Character(50)
 {
+
 }
 
 void Enemy::Attack(Player& player)
 {
-    int damage = 10;
-    player.TakeDamage(damage);
+    damage = GetRandomValue();
 
+    player.TakeDamage(damage);
 }
